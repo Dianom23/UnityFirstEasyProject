@@ -28,19 +28,17 @@ public class Player : MonoBehaviour
     private bool _isBoost;
     private bool _isShoot;
 
-
-
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
 
-        Application.targetFrameRate = 200;
-        foreach (var gun in _guns)
+        if(_guns.Count > 0)
         {
-            gun.enabled = false;
+            foreach (var gun in _guns)
+            {
+                gun.enabled = false;
+            }
         }
-        
     }
 
     private void Update()
@@ -152,7 +150,6 @@ public class Player : MonoBehaviour
 
     private void OnRotation()
     {
-        //Vector3 move = transform.TransformDirection(new Vector3(_moveDirection.x, 0, _moveDirection.y));
         transform.Rotate(new Vector3(-_mouseDirection.y, _mouseDirection.x, 0));
     }
 }
